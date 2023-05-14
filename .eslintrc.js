@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'next',
   ],
   overrides: [
   ],
@@ -26,5 +27,7 @@ module.exports = {
     'react/prop-types': 0,
     'jsx-a11y/anchor-is-valid': 0,
     'max-len': 0,
-  },
+    'react/no-unescaped-entities': 'off',
+    '@next/next/no-page-custom-font': 'off',
+  }
 };
