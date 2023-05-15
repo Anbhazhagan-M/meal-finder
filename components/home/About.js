@@ -1,7 +1,8 @@
-import React from "react";
-import classes from "./About.module.scss";
-import Title from "../text/Title";
-import Text from "../text/Text";
+/* eslint-disable linebreak-style */
+import React from 'react';
+import classes from './About.module.scss';
+import Title from '../text/Title';
+import Text from '../text/Text';
 
 function About() {
   return (

@@ -1,10 +1,11 @@
-import clsx from "clsx";
-import Link from "next/link";
-import React from "react";
+/* eslint-disable linebreak-style */
+import clsx from 'clsx';
+import Link from 'next/link';
+import React from 'react';
 
-import classes from "./Button.module.scss";
+import classes from './Button.module.scss';
 
-function ButtonWithLink({ link = "/", children, variant = "secondary" }) {
+function ButtonWithLink({ link = '/', children, variant = 'secondary' }) {
   return (
     <Link
       href={link}
@@ -16,7 +17,9 @@ function ButtonWithLink({ link = "/", children, variant = "secondary" }) {
   );
 }
 
-function Button({ children, variant = "secondary", onClick, className }) {
+function Button({
+  children, variant = 'secondary', onClick, className,
+}) {
   return (
     <button
       type="button"

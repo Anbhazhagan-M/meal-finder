@@ -1,25 +1,26 @@
-import { useQueries } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
-import { getSingleMeal } from "./meals/[id]";
-import classes from "./savedMeals.module.scss";
-import Title from "../../components/text/Title";
-import Text from "../../components/text/Text";
-import { BeatLoader } from "react-spinners";
-import Link from "next/link";
-import PointText from "../../components/text/PointText";
-import Image from "next/image";
+/* eslint-disable linebreak-style */
+import { useQueries } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
+import { BeatLoader } from 'react-spinners';
+import Link from 'next/link';
+import Image from 'next/image';
+import { getSingleMeal } from './meals/[id]';
+import classes from './savedMeals.module.scss';
+import Title from '../../components/text/Title';
+import Text from '../../components/text/Text';
+import PointText from '../../components/text/PointText';
 
-function SavedMeals(props) {
+function SavedMeals() {
   const [savedMealsId, setSavedMealsId] = useState([]);
 
   useEffect(() => {
-    if (localStorage.getItem("savedMeals")) {
-      setSavedMealsId(JSON.parse(localStorage.getItem("savedMeals")));
+    if (localStorage.getItem('savedMeals')) {
+      setSavedMealsId(JSON.parse(localStorage.getItem('savedMeals')));
     }
   }, []);
 
   const queries = savedMealsId.map((id) => ({
-    queryKey: ["singleMeal", id],
+    queryKey: ['singleMeal', id],
     queryFn: getSingleMeal,
   }));
   const result = useQueries({ queries });
@@ -30,11 +31,11 @@ function SavedMeals(props) {
       </Title>
       <div className={classes.list_container}>
         {savedMealsId.length <= 0 && <Text>You have no saved meals</Text>}
-        {result &&
-          result.map(({ data, isLoading }, index) => {
+        {result
+          && result.map(({ data, isLoading }, index) => {
             if (isLoading) {
               return (
-                <BeatLoader color="#fff" key={savedMealsId[index]}></BeatLoader>
+                <BeatLoader color="#fff" key={savedMealsId[index]} />
               );
             }
             return (
@@ -48,13 +49,21 @@ function SavedMeals(props) {
                     src={data.strMealThumb}
                     height={250}
                     width={250}
-                  ></Image>
+                  />
                 </div>
                 <Title variant="secondary" className={classes.mealTitle}>
                   {data.strMeal}
                 </Title>
-                <PointText>Category: {data.strCategory}</PointText>
-                <PointText>Area: {data.strArea}</PointText>
+                <PointText>
+                  Category:
+                  {' '}
+                  {data.strCategory}
+                </PointText>
+                <PointText>
+                  Area:
+                  {' '}
+                  {data.strArea}
+                </PointText>
               </Link>
             );
           })}
